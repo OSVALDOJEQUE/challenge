@@ -1,6 +1,11 @@
 import requests
 import pytest
-from src.utils import BASE_URL, HEADERS
+from src.utils import BASE_URL, HEADERS, get_token
+
+@pytest.fixture(scope="module")
+def token():
+    # Supondo que get_token retorna um token válido
+    return get_token("user", "pass123")
 
 def test_create_post_valid_data(token):
     headers = {"Authorization": f"Bearer {token}"}
